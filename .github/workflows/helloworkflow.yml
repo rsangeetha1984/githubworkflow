@@ -19,3 +19,5 @@ jobs:
         steps:
           - name: 'Print Current working directory'
             run: echo '${{ toJSON(github) }}'
+          - name: 'Printing the workspace content'
+            run: ls -ltr ${{ github.workspace }}
