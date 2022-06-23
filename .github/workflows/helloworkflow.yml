@@ -17,6 +17,7 @@ jobs:
         strategy:
             fail-fast: false
         steps:
+          - uses: actions/checkout@v3
           - name: 'Print Current working directory'
             run: echo '${{ toJSON(github) }}'
           - name: 'Printing the workspace content'
