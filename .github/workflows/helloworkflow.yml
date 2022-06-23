@@ -1,0 +1,21 @@
+name: HELLO-WORK-FLOW
+on:
+    push:
+        branches-ignore:
+            - 'dependabot/**'
+    pull_request:
+        types: [closed, opened, synchronize, reopened]
+        branches:
+            - '*'
+permissions:
+    contents: read
+
+jobs:
+    HELLO-FIRST-JOB:
+        runs-on: ubuntu-20.04
+        timeout-minutes: 20
+        strategy:
+            fail-fast: false
+        steps:
+          - name: 'Print Current working directory'
+            run: echo '${{ toJSON(github) }}'
