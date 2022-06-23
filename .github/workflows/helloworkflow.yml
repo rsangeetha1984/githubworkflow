@@ -22,3 +22,5 @@ jobs:
             run: echo '${{ toJSON(github) }}'
           - name: 'Printing the workspace content'
             run: ls -ltr ${{ github.workspace }}
+          - run: mkdir test1 && cd test1 && pwd
+          - run: pwd
