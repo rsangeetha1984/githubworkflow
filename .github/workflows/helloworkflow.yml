@@ -12,6 +12,8 @@ permissions:
 
 jobs:
     HELLO-FIRST-JOB:
+        if: >-
+            github.event.action != 'closed'
         runs-on: ubuntu-20.04
         timeout-minutes: 20
         strategy:
