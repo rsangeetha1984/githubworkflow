@@ -13,7 +13,12 @@ permissions:
 jobs:
     HELLO-FIRST-JOB:
         if: >-
-            github.event.action != 'closed'
+            github.event.action != 'closed' &&
+            !contains(github.event.head_commit.message, '[ci skip]') &&
+            !contains(github.event.head_commit.message, '[skip ci]') &&
+            !contains(github.event.pull_request.title, '[skip ci]') &&
+            !contains(github.event.pull_request.title, '[ci skip]') &&
+            (github.event.pull_request.draft == false || !contains(github.event.pull_request.labels.*.name, 'pr: skip-ci'))
         runs-on: ubuntu-20.04
         timeout-minutes: 20
         strategy:
